@@ -38,7 +38,7 @@ public class AddUserPageTest extends QaBase {
 		login.enterPassword(password);
 		HomePage home=login.clickOnLoginButton();
 		home.enterEndtour();
-		home.clickUserManagement();
+		home.clickOnUserManagement();
 		AddUserPage adduser=home.clickUsersOption();
 		adduser.clickAddUserButton();
 		adduser.enterFirstName(firstname);
@@ -49,7 +49,7 @@ public class AddUserPageTest extends QaBase {
 		adduser.enterPassword(passworduser);
 		adduser.enterConfirmPassword(passworduser);
 		adduser.enterSaveButton();
-		
+		adduser.searchOnSearchField(username_value);
 		
 		
 
@@ -72,7 +72,7 @@ public class AddUserPageTest extends QaBase {
 		login.enterPassword(password);
 		HomePage home=login.clickOnLoginButton();
 		home.enterEndtour();
-		home.clickUserManagement();
+		home.clickOnUserManagement();
 		AddUserPage adduser=home.clickUsersOption();
 		adduser.clickAddUserButton();
 		adduser.enterFirstName(firstname);
@@ -84,7 +84,7 @@ public class AddUserPageTest extends QaBase {
 		adduser.enterConfirmPassword(passworduser);
 		adduser.enterSaveButton();
 		adduser.waitForTextToBeInvisible();
-		adduser.searchOnSearchField(email);
+		adduser.searchOnSearchField(username_value);
 				
 	}
 	}

@@ -72,6 +72,7 @@ public class AddUserPage {
 
 	public void selectFromDropdown()
 	{
+	
 		Select select=new Select(role_dropdown);
 		select.selectByIndex(3);
 	}
@@ -96,15 +97,17 @@ public class AddUserPage {
 	}
 
 
-	public void searchOnSearchField(String email)
+	public void searchOnSearchField(String username_value)
 	{
-		search_field.sendKeys(email);
+		search_field.sendKeys(username_value);
 	}
 
 	public void waitForTextToBeInvisible()
 	{
 		WaitUtility.waitForElementToBeInvisible(driver, success_message);
 	}
+	
+	
 	
 	
 }

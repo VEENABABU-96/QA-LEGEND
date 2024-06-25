@@ -61,9 +61,10 @@ public class HomePage {
 		return title;
 	}
 	
-	public void clickUserManagement()
+	public UserManagementPage clickOnUserManagement()
 	{
 		user_management.click();
+		return new UserManagementPage(driver);
 	}
 	
 	public AddUserPage clickUsersOption()

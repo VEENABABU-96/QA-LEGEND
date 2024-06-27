@@ -19,36 +19,33 @@ public class HomePageTest extends QaBase {
 	{
 		
 		String username=QaExcelUtility.readStringData(0, 0, Constants.LOGINPAGE);
-		String password=QaExcelUtility.readStringData(0, 1, Constants.LOGINPAGE);
+		String password=QaExcelUtility.readIntegerData(0, 1, Constants.LOGINPAGE);
 		
 		LoginPage login=new LoginPage(driver);
 		login.enterUserName(username);
 		login.enterPassword(password);
 		HomePage home=login.clickOnLoginButton();
-		String actual_title=home.getHomePageTitle();
-		String expected_title=QaExcelUtility.readStringData(0, 0, Constants.HOMEPAGE);
-		Assert.assertEquals(actual_title, expected_title, Messages.HOME_TITLEMISMATCH);
+		String homepage_title=home.getHomePageTitle();
+		String expected_title=QaExcelUtility.readStringData(0, 1, Constants.HOMEPAGE);
+		Assert.assertEquals(homepage_title, expected_title, Messages.HOME_TITLEMISMATCH);
 	}
 	@Test
-	public void verifyEditProfile()
+	public void verifyUserLoginDate()
 	{
+		
+		
 		String username=QaExcelUtility.readStringData(0, 0, Constants.LOGINPAGE);
 		String password=QaExcelUtility.readIntegerData(0, 1, Constants.LOGINPAGE);
-        String new_lastname=RandomDataUtility.getLastName();
-
+		
 		LoginPage login=new LoginPage(driver);
 		login.enterUserName(username);
 		login.enterPassword(password);
-	    HomePage home=login.clickOnLoginButton();
-	    home.enterEndtour();
-	    home.clickUserLogout();
-	    home.clickOnProfileOption();
-	    home.editLastName(new_lastname);
-	    home.clickonUpdateButton();
-	    String actual_editname=home.getUserProfileText();
-	    String expected_editname=Constants.PROFILENAME+new_lastname;
-	    Assert.assertEquals(actual_editname, expected_editname,Messages.HOME_FAILEDPROFILEUPDATION);
+		HomePage home=login.clickOnLoginButton();
+        String actual_logindate=home.getLoginDate();
+        String expected_logindate=home.getCurrentDate();
+        Assert.assertEquals(actual_logindate, expected_logindate, "LOGINDATE MISMATTCHED");
 
 	}
+	}
 
-}
+

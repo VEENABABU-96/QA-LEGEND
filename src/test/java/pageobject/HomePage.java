@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.DateUtility;
+
 public class HomePage {
 	WebDriver driver;
 	
@@ -36,14 +38,17 @@ public class HomePage {
 	@FindBy(xpath="//div[@class='pull-left']//a[@class='btn btn-default btn-flat']")
 	WebElement profile_option;
 
-	@FindBy(xpath="//input[@id='first_name']")
+	/*@FindBy(xpath="//input[@id='first_name']")
 	WebElement new_FirstName;
 	
 	@FindBy(xpath="//input[@id='last_name']")
 	WebElement new_LastName;
 
 	@FindBy(xpath="//button[@class='btn btn-primary pull-right']")
-	WebElement update_button;
+	WebElement update_button;*/
+	
+	@FindBy(xpath="//div[@class='m-8 pull-left mt-15 hidden-xs']")
+	WebElement login_datefield;
 	
 	
 	
@@ -94,7 +99,7 @@ public class HomePage {
 		profile_option.click();
 	}
 
-	public void editFirstName(String new_firstname)
+	/*public void editFirstName(String new_firstname)
 	{
 		new_FirstName.clear();
 		new_FirstName.sendKeys(new_firstname);
@@ -108,12 +113,24 @@ public class HomePage {
 	public void clickonUpdateButton()
 	{
 		update_button.click();
-	}
+	}*/
 
 	public String getUserProfileText()
 	{
 		String profile_text=user_logout.getText();
 		return profile_text;
+	}
+	
+	public String getLoginDate()
+	{
+		String login_date=login_datefield.getText();
+		return login_date;
+	}
+
+	public String getCurrentDate()
+	{
+		String current_date=DateUtility.getUserLoginDate("dd-MM-YYYY");
+		return current_date;
 	}
 	
 	

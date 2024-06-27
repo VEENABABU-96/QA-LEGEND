@@ -56,9 +56,9 @@ public class AddUserPage {
 		add_user.click();
 	}
 
-	public void enterFirstName(String first_name)
+	public void enterFirstName(String firstname)
 	{
-		firstname_field.sendKeys(first_name);
+		firstname_field.sendKeys(firstname);
 	}
 
 	public void enterLastName(String last_name)
@@ -77,9 +77,9 @@ public class AddUserPage {
 		select.selectByIndex(3);
 	}
 
-	public void enterUserName(String username_value)
+	public void enterUserName(String username)
 	{
-		username_option.sendKeys(username_value);
+		username_option.sendKeys(username);
 	}
 
 	public void enterPassword(String password)
@@ -91,15 +91,16 @@ public class AddUserPage {
 		confirmpassword_field.sendKeys(password);
 	}
 
-	public void enterSaveButton()
+	public UserPage enterSaveButton()
 	{
 		save_button.click();
+		return new UserPage(driver);
 	}
 
 
-	public void searchOnSearchField(String username_value)
+	public void searchOnSearchField(String username)
 	{
-		search_field.sendKeys(username_value);
+		search_field.sendKeys(username);
 	}
 
 	public void waitForTextToBeInvisible()

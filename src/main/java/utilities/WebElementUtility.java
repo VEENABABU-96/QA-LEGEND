@@ -4,20 +4,25 @@ import org.openqa.selenium.WebElement;
 
 public class WebElementUtility {
 	
-	public static boolean isElementDisplayed(WebElement element)
+	public static boolean checkIsDisplayed(WebElement element)
 	{
-		boolean option_displayed=element.isDisplayed();
-		return option_displayed;
+		boolean check=element.isDisplayed();
+		System.out.println(check);
+		return check;
 	}
-	public static boolean isElementEnabled(WebElement element) 
+
+	public static boolean checkIsSelected(WebElement element)
 	{
-		boolean option_enabled=element.isEnabled();
-		return option_enabled;
+		boolean check=element.isSelected();
+		System.out.println(check);
+		return check;
 	}
-	public static boolean isElementSelected(WebElement element) 
+
+	public static boolean checkIsEnabled(WebElement element)
 	{
-		boolean option_selected=element.isEnabled();
-		return option_selected;
+		boolean check=element.isEnabled();
+		System.out.println(check);
+		return check;
 	}
 	
 	

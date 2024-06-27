@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.WebElementUtility;
+
 public class UserManagementPage {
 	
 	WebDriver driver;
@@ -15,34 +17,28 @@ public class UserManagementPage {
 		PageFactory.initElements(driver,this);
 	}
 	
-	@FindBy(xpath="//i[@class='fa fa-user']//following-sibling::span")
-	WebElement users;
 	
-	@FindBy(xpath="//i[@class='fa fa-briefcase']//following-sibling::span")
-	WebElement roles;
 	
-	@FindBy(xpath="//i[@class='fa fa-handshake-o']//following-sibling::span")
-	WebElement salescommission_agent;
+	@FindBy(xpath="/html/body/div[2]/aside/section/ul/li[2]/ul/li[1]")
+	WebElement user_option;
 	
-	public boolean userOptionInUserManagement()
+	
+	
+	public UserPage clickUsersOption()
+
 	{
-		boolean useroption=users.isDisplayed();
-		return useroption;
-		
+		user_option.click();
+		return new UserPage(driver);
+	}
+
+	//public void ifElementIsEnabled()
+	public boolean ifElementIsEnabled()
+	{
+		WebElementUtility.checkIsEnabled(user_option);
+		return WebElementUtility.checkIsEnabled(user_option);
 	}
 	
-	public boolean  rolesOptionInUserMangement()
-	{
-		boolean rolesoption=roles.isDisplayed();
-		return rolesoption;
-		
-	}
 	
-	public boolean agentsOptionInUserManagement()
-	{
-		boolean agentsoption=salescommission_agent.isDisplayed();
-		return agentsoption;
-	}
 	
 	
 }

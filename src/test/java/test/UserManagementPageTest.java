@@ -12,7 +12,7 @@ import utilities.QaExcelUtility;
 
 public class UserManagementPageTest extends QaBase {
 	@Test
-	public void verifyUsersInUserManagement()
+	public void verifyUsersOptionIsEnabled()
 	{
 	
 	String username=QaExcelUtility.readStringData(0, 0, Constants.LOGINPAGE);
@@ -23,11 +23,9 @@ public class UserManagementPageTest extends QaBase {
 	login.enterPassword(password);
 	HomePage home=login.clickOnLoginButton();
 	home.enterEndtour();
-	UserManagementPage usermanagement=home.clickOnUserManagement();
-	boolean roles_status=usermanagement.agentsOptionInUserManagement();
-	System.out.println(roles_status);
-	
-	Assert.assertTrue(roles_status, "rolesoption is not available");
-
+	UserManagementPage usermanage=home.clickOnUserManagement();
+	usermanage.ifElementIsEnabled();
+	boolean user_isenabled=usermanage.ifElementIsEnabled();
+	Assert.assertTrue(user_isenabled);
 }
 }

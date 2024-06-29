@@ -5,25 +5,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.WaitUtility;
 import utilities.WebElementUtility;
 
 public class UserManagementPage {
-	
+
 	WebDriver driver;
-	
-	public UserManagementPage(WebDriver driver)
-	{
-		this.driver=driver;
-		PageFactory.initElements(driver,this);
+
+	public UserManagementPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
-	
-	
-	
-	@FindBy(xpath="/html/body/div[2]/aside/section/ul/li[2]/ul/li[1]")
+
+	@FindBy(xpath = "//i[@class='fa fa-user']//following-sibling::span")
 	WebElement user_option;
-	
-	
-	
+
 	public UserPage clickUsersOption()
 
 	{
@@ -31,14 +27,13 @@ public class UserManagementPage {
 		return new UserPage(driver);
 	}
 
-	//public void ifElementIsEnabled()
-	public boolean ifElementIsEnabled()
-	{
+	public boolean ifElementIsEnabled() {
 		WebElementUtility.checkIsEnabled(user_option);
 		return WebElementUtility.checkIsEnabled(user_option);
 	}
-	
-	
-	
-	
+
+	public void waitForButtonToBeInvisible() {
+		WaitUtility.waitForElementToBeInvisible(driver, user_option);
+	}
+
 }

@@ -8,49 +8,49 @@ import org.openqa.selenium.support.PageFactory;
 import utilities.WaitUtility;
 
 public class UserPage {
-	
+
 	WebDriver driver;
-	public UserPage(WebDriver driver)
-	{
-		this.driver=driver;
-		PageFactory.initElements(driver,this);
+
+	public UserPage(WebDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
-	
-	@FindBy(xpath="//a[@class='btn btn-block btn-primary']")
+
+	@FindBy(xpath = "//a[@class='btn btn-block btn-primary']")
 	WebElement add_user;
-	
-	@FindBy(xpath="//input[@class='form-control input-sm']")
+
+	@FindBy(xpath = "//input[@class='form-control input-sm']")
 	WebElement search_field;
 
-	@FindBy(className="toast-success")
+	@FindBy(className = "toast-success")
 	WebElement success_message;
-	
-	//@FindBy(xpath="//td[@class='sorting_1']")
-	@FindBy(xpath="//table[@id='users_table']//tbody//td[1]")
+
+	@FindBy(xpath = "//tr[@class='odd']//td[1]")
 	WebElement search_row;
-	
-	
-	
-	public AddUserPage clickAddUserButton()
-	{
+
+	@FindBy(xpath = "//table[@id='users_table']//tr//td[4]")
+	WebElement email_field;
+
+	public AddUserPage clickAddUserButton() {
 		add_user.click();
 		return new AddUserPage(driver);
 	}
-	
-	public void searchOnSearchField(String username)
-	{
-		search_field.sendKeys(username);
+
+	public void searchOnSearchField(String value) {
+
+		WaitUtility.waitForElementToBeVisile(driver, search_field);
+		search_field.sendKeys(value);
 	}
-	
-	public void waitForTextToBeInvisible()
-	{
+
+	public String waitForTextToBeInvisible() {
+		String msg_text = success_message.getText();
 		WaitUtility.waitForElementToBeInvisible(driver, success_message);
+		return msg_text;
 	}
-	
-	public String getSearchUser()
-	{
-		String user=search_row.getText();
-		//System.out.println(user);
+
+	public String getSearchUser() {
+		WaitUtility.waitForElementToBeVisile(driver, email_field);
+		String user = email_field.getText();
 		return user;
 	}
 

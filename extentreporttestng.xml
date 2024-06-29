@@ -3,17 +3,20 @@
 <suite name="Functional Suite">
 	<listeners>
 		<listener class-name="listeners.Extent_Listeners"></listener>
+		<listener class-name="listeners.AnnotationTransformer"></listener>
 	</listeners>
-  <test name="Report Test">
-    <classes>
-      <class name="test.HomePageTest">
-      <methods>
-		  <include name="verifyHomePageTitle"/>
-		  <exclude name="verifyUserLoginDate"/>
-	  </methods>
-      </class>
-      <class name="LoginPageTest">
-	  </class>
-    </classes>
-  </test> <!-- Functional Test -->
-</suite> <!-- Functional Suite -->
+	<test name="Report Test">
+		<parameter name="browser" value="Chrome" />
+		<classes>
+			<class name="test.ResetPageTest" />
+			<class name="test.UserManagementPageTest" />
+			<class name="test.MyProfilePageTest" />
+			<class name="test.LoginPageTest" />
+			<class name="test.HomePageTest" />
+			<class name="test.AddUserPageTest" />
+			<class name="test.UserPageTest" />
+		</classes>
+	</test> <!--
+	Functional Test -->
+</suite> <!--
+Functional Suite -->

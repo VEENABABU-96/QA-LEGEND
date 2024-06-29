@@ -23,31 +23,24 @@ import utilities.RandomDataUtility;
 
 public class AddUserPageTest extends QaBase {
 	@Test
-	public void verifyAddUser()
-	{
-		String username=QaExcelUtility.readStringData(0, 0, Constants.LOGINPAGE);
-		String password=QaExcelUtility.readIntegerData(0, 1, Constants.LOGINPAGE);
-		
-		String first_name= RandomDataUtility.getFirstName();
-		String last_name=RandomDataUtility.getLastName();
-		String email= first_name+Constants.DOT+last_name+Constants.GMAIL;
-		String user_name=first_name+Constants.DOT+last_name;
-		String passworduser =first_name+Constants.AT+last_name;
-		
-		
-		
-		
-		LoginPage login=new LoginPage(driver);
+	public void verifyAddUser() {
+		String username = QaExcelUtility.readStringData(0, 0, Constants.LOGINPAGE);
+		String password = QaExcelUtility.readIntegerData(0, 1, Constants.LOGINPAGE);
+
+		String first_name = RandomDataUtility.getFirstName();
+		String last_name = RandomDataUtility.getLastName();
+		String email = first_name + Constants.DOT + last_name + Constants.GMAIL;
+		String user_name = first_name + Constants.DOT + last_name;
+		String passworduser = first_name + Constants.AT + last_name;
+
+		LoginPage login = new LoginPage(driver);
 		login.enterUserName(username);
 		login.enterPassword(password);
-		HomePage home=login.clickOnLoginButton();
+		HomePage home = login.clickOnLoginButton();
 		home.enterEndtour();
-		home.clickOnUserManagement();
-		AddUserPage adduser=home.clickUsersOption();
-		adduser.clickAddUserButton();
-		UserManagementPage usermanage=home.clickOnUserManagement();
-		UserPage user=usermanage.clickUsersOption();
-		AddUserPage addusers=user.clickAddUserButton();		
+		UserManagementPage usermanage = home.clickOnUserManagement();
+		UserPage user = usermanage.clickUsersOption();
+		AddUserPage adduser = user.clickAddUserButton();
 		adduser.enterFirstName(first_name);
 		adduser.enterLastName(last_name);
 		adduser.enterEmail(email);
@@ -56,41 +49,31 @@ public class AddUserPageTest extends QaBase {
 		adduser.enterPassword(passworduser);
 		adduser.enterConfirmPassword(passworduser);
 		adduser.enterSaveButton();
-		adduser.searchOnSearchField(username);
-		user.searchOnSearchField(username);
-		//String expected_usertext=username;
-		String actual_usertext=user.getSearchUser();
-		System.out.println(actual_usertext);
-		//user.getSearchUser();
-		//Assert.assertEquals(actual_usertext, expected_usertext, Messages.LOGIN_FAILED);
-		
-		
+		user.searchOnSearchField(email);
+		String expected_usertext = email;
+		String actual_usertext = user.getSearchUser();
+		Assert.assertEquals(actual_usertext, expected_usertext, Messages.USER_MISMATCH);
 
 	}
+
 	@Test
-	public void verifyNewlyRegisteredUser()
-	{
-		
-		String username=QaExcelUtility.readStringData(0, 0, Constants.LOGINPAGE);
-		String password=QaExcelUtility.readIntegerData(0, 1, Constants.LOGINPAGE);
-		
-		String first_name= RandomDataUtility.getFirstName();
-		String last_name=RandomDataUtility.getLastName();
-		String email= first_name+Constants.DOT+last_name+Constants.GMAIL;
-		String user_name=first_name+Constants.DOT+last_name;
-		String passworduser =first_name+Constants.AT+last_name;
-		
-		LoginPage login=new LoginPage(driver);
+	public void verifyNewlyRegisteredUser() {
+
+		String username = QaExcelUtility.readStringData(0, 0, Constants.LOGINPAGE);
+		String password = QaExcelUtility.readIntegerData(0, 1, Constants.LOGINPAGE);
+		String first_name = RandomDataUtility.getFirstName();
+		String last_name = RandomDataUtility.getLastName();
+		String email = first_name + Constants.DOT + last_name + Constants.GMAIL;
+		String user_name = first_name + Constants.DOT + last_name;
+		String passworduser = first_name + Constants.AT + last_name;
+		LoginPage login = new LoginPage(driver);
 		login.enterUserName(username);
 		login.enterPassword(password);
-		HomePage home=login.clickOnLoginButton();
+		HomePage home = login.clickOnLoginButton();
 		home.enterEndtour();
-		home.clickOnUserManagement();
-		AddUserPage adduser=home.clickUsersOption();
-		adduser.clickAddUserButton();
-		UserManagementPage usermanage=home.clickOnUserManagement();
-		UserPage user=usermanage.clickUsersOption();
-		AddUserPage addusers=user.clickAddUserButton();	
+		UserManagementPage usermanage = home.clickOnUserManagement();
+		UserPage user = usermanage.clickUsersOption();
+		AddUserPage adduser = user.clickAddUserButton();
 		adduser.enterFirstName(first_name);
 		adduser.enterLastName(last_name);
 		adduser.enterEmail(email);
@@ -99,19 +82,15 @@ public class AddUserPageTest extends QaBase {
 		adduser.enterPassword(passworduser);
 		adduser.enterConfirmPassword(passworduser);
 		adduser.enterSaveButton();
-		adduser.waitForTextToBeInvisible();
 		user.waitForTextToBeInvisible();
 		home.clickUserLogout();
 		home.clickLogoutButton();
-		login.enterUserName(username);
+		login.enterUserName(user_name);
 		login.enterPassword(passworduser);
 		login.clickOnLoginButton();
-		String actual_message=home.getLoginText();
-		String expected_message=Messages.GREETINGS+first_name+Constants.CHARACTER;
+		String actual_message = home.getLoginText();
+		String expected_message = Messages.GREETINGS + first_name + Constants.CHARACTER;
 		Assert.assertEquals(actual_message, expected_message, Messages.LOGIN_FAILED);
-		
-				
-	}
-	}
 
-
+	}
+}

@@ -7,6 +7,8 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import constants.Constants;
+
 public class QaExcelUtility {
 	static FileInputStream file ;
 	static XSSFWorkbook book;
@@ -17,7 +19,8 @@ public class QaExcelUtility {
 		
 		try
 		{
-			file = new FileInputStream("C:\\Users\\veena\\eclipse-workspace\\QA-LEGEND\\src\\main\\resources\\Qa_TestData.xlsx");
+			String path=Constants.HOME_DIRECTORY+Constants.TESTDATA_EXCELPATH;
+			file = new FileInputStream(path);
 			book =new XSSFWorkbook(file);
 			sheet =book.getSheet(sheetname);
 			Row r = sheet.getRow(row);
@@ -37,8 +40,8 @@ public class QaExcelUtility {
 		try
 		{
 			
-		file = new FileInputStream("C:\\Users\\veena\\eclipse-workspace\\QA-LEGEND\\src\\main\\resources\\Qa_TestData.xlsx");
-		book =new XSSFWorkbook(file);
+		String path=Constants.HOME_DIRECTORY+Constants.TESTDATA_EXCELPATH;
+		file = new FileInputStream(path);
 		sheet =book.getSheet(sheetname);
 		Row r = sheet.getRow(row);
 		Cell c =r.getCell(column);

@@ -11,7 +11,7 @@ public class PageUtility {
 		select.selectByValue(value);
 	}
 
-	public void selectByVisibleText(WebElement element,String visibleText)
+	public static void selectDropdownByVisibleText(WebElement element,String visibleText)
 	{
 		Select select =new Select(element);
 		select.selectByVisibleText(visibleText);

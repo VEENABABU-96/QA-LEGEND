@@ -20,11 +20,6 @@
 			<version>7.9.0</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.obsqura</groupId>
-			<artifactId>MavenprojectExcel</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
 		<dependency>
 			<groupId>org.apache.poi</groupId>

@@ -3,33 +3,30 @@ package utilities;
 import com.github.javafaker.Faker;
 
 public class RandomDataUtility {
-static Faker faker;
-	
-	public static String getPrefix()
-	{
-		faker =new Faker();
-		String prefix =faker.name().prefix();
+	static Faker faker;
+
+	public static String getPrefix() {
+		faker = new Faker();
+		String prefix = faker.name().prefix();
 		return prefix;
 	}
-	
-	public static String getFirstName()
-	{
-		faker=new Faker(); //reference for faker class
-		String first_name=faker.name().firstName(); //get first name
+
+	public static String getFirstName() {
+		faker = new Faker();
+		String first_name = faker.name().firstName();
 		return first_name;
-				
+
 	}
 
-	public static String getLastName()
-	{
-		faker=new Faker();
-		String last_name=faker.name().lastName();
+	public static String getLastName() {
+		faker = new Faker();
+		String last_name = faker.name().lastName();
 		return last_name;
 	}
 
 	public static String getPercent() {
-		faker=new Faker();
-		String salecommission=faker.number().digit();
+		faker = new Faker();
+		String salecommission = faker.number().digit();
 		return salecommission;
 	}
 

@@ -19,6 +19,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
 import constants.Constants;
+import utilities.WaitUtility;
 
 public class QaBase {
 
@@ -67,14 +68,15 @@ public class QaBase {
 		driver.manage().window().maximize();
 	}
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	@Parameters("browser")
 	public void setUp(String browser_name) 
 	{
 		initializeBrowser(browser_name);
+		WaitUtility.waitUsingImplicitWait(driver);
 	}
 
-	@AfterMethod
+	@AfterMethod(alwaysRun=true)
 	public void closeBrowser(ITestResult result) throws IOException 
 	{
 		if(result.getStatus()==ITestResult.FAILURE)
@@ -86,9 +88,9 @@ public class QaBase {
 	}
 
 	public void takesScreenShot(ITestResult result) throws IOException {
-		TakesScreenshot takesscreenshot = (TakesScreenshot) driver;
-		File screenshot = takesscreenshot.getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(screenshot, new File("./Screenshot/" + result.getName() + ".png"));
+		TakesScreenshot takesscreenshot=(TakesScreenshot)driver;
+		File screenshot=takesscreenshot.getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(screenshot,new File("./Screenshot/"+result.getName()+".png"));
 	}
 
 }
